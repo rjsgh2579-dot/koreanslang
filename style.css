@@ -11,6 +11,28 @@
   --red: #ef6351;
   --gray: #8b94a3;
   --green: #32a67a;
+  --control-bg: rgba(255, 255, 255, 0.95);
+  --button-bg: linear-gradient(135deg, #152033, #2b538a);
+  --button-shadow: 0 14px 30px rgba(21, 32, 51, 0.2);
+  --toggle-bg: rgba(255, 255, 255, 0.75);
+  --toggle-border: rgba(21, 32, 51, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.8);
+}
+
+:root[data-theme="dark"] {
+  --bg-top: #0d1321;
+  --bg-bottom: #17253d;
+  --ink: #f3f7ff;
+  --muted: #b5c1d4;
+  --panel: rgba(10, 18, 32, 0.78);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --control-bg: rgba(18, 28, 46, 0.95);
+  --button-bg: linear-gradient(135deg, #f4c542, #ef6351);
+  --button-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+  --toggle-bg: rgba(18, 28, 46, 0.9);
+  --toggle-border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(14, 24, 40, 0.9);
 }
 
 * {
@@ -37,12 +59,37 @@ body {
   margin-bottom: 28px;
 }
 
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
 .eyebrow {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   color: #9e5b34;
+}
+
+:root[data-theme="dark"] .eyebrow {
+  color: #f4c542;
+}
+
+.theme-toggle {
+  border: 1px solid var(--toggle-border);
+  background: var(--toggle-bg);
+  color: var(--ink);
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .hero h1 {
@@ -99,7 +146,7 @@ body {
 
 .field select {
   padding: 0 16px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--control-bg);
   color: var(--ink);
   box-shadow: inset 0 0 0 1px rgba(21, 32, 51, 0.08);
 }
@@ -108,12 +155,12 @@ body {
   padding: 0 24px;
   font-weight: 700;
   color: white;
-  background: linear-gradient(135deg, #152033, #2b538a);
+  background: var(--button-bg);
   cursor: pointer;
   transition:
     transform 160ms ease,
     box-shadow 160ms ease;
-  box-shadow: 0 14px 30px rgba(21, 32, 51, 0.2);
+  box-shadow: var(--button-shadow);
 }
 
 .generate-button:hover {
@@ -134,7 +181,7 @@ body {
 .result-card {
   padding: 18px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--card-bg);
   box-shadow: inset 0 0 0 1px rgba(21, 32, 51, 0.06);
 }
 
@@ -205,6 +252,11 @@ body {
   .panel {
     padding: 18px;
     border-radius: 22px;
+  }
+
+  .hero-top {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .controls {
